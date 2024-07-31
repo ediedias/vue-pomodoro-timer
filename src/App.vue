@@ -6,16 +6,29 @@ const WORK_TIME = 25 * 60; //25 * 60 seconds
 const BREAK_TIME = 5 * 60; //25 * 60 seconds
 
 const time = ref(WORK_TIME);
+const isRunning = ref(false);
 const intervalId = ref(null);
 
 const startTimer = () => {
-   intervalId.value = setInterval(() => {
-    if(time.value > 0) {
-      time.value--;
-    } else {
-      clearInterval(intervalId);
-    }
-  }, 1000);
+  if (!isRunning.value) {
+    isRunning.value = true;
+    intervalId.value = setInterval(() => {
+      if(time.value > 0) {
+        time.value--;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 1000);
+  }
+};
+
+const pauseTimer = () => {
+  clearInterval(intervalId.value);
+};
+
+const resetTimer = () => {
+  clearInterval(intervalId.value);
+  time.value = WORK_TIME;
 };
 
 const formattedTime = computed(() => {
@@ -37,9 +50,11 @@ const formattedTime = computed(() => {
     </div>
     
     <div class="flex justify-between">
-      <button @click="startTimer" class="bg-blue-500 text-white px-4 py-2 rounded">Start</button>
-      <button class="bg-yellow-500 text-white px-4 py-2 rounded">Pause</button>
-      <button class="bg-red-500 text-white px-4 py-2 rounded">Reset</button>
+      <button @click="startTimer" 
+        class="text-white px-4 py-2 rounded"
+        :class="{'bg-blue-500': !isRunning, 'bg-blue-200': isRunning }" :disabled="isRunning">Start</button>
+      <button @click="pauseTimer" class="bg-yellow-500 text-white px-4 py-2 rounded">Pause</button>
+      <button @click="resetTimer" class="bg-red-500 text-white px-4 py-2 rounded">Reset</button>
     </div>
   </div>
 </template>

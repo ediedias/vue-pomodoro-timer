@@ -1,35 +1,10 @@
-# vue-pomodoro-timer
+# Pomodoro Timer
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple Pomodoro timer application built with Vue.js 3 and TailwindCSS. This project helps users manage their time effectively using the Pomodoro technique, which involves working for 25 minutes followed by a 5-minute break.
 
-## Recommended IDE Setup
+## Project Description
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+The Pomodoro Timer includes:
+- A timer display to show the countdown.
+- Control buttons to start, pause, and reset the timer.
+- Automatic switching between work and break periods.
